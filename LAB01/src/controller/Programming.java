@@ -38,7 +38,8 @@ public class Programming extends Menu {
     }
 
     public void doSort() {
-        String[] mcs = {"Bubble Sort", "Quick Sort", "Exit"};
+        Programming programming = new Programming();
+        String[] mcs = {"Bubble Sort", "Quick Sort", "Go Back"};
         Menu sortmenu = new Menu("Menu Sort", mcs) {
             @Override
             public void execute(int ch) {
@@ -62,7 +63,7 @@ public class Programming extends Menu {
                         lib.print(arrQuick);
                         break;
                     case 3:
-                        System.exit(0);
+                        programming.run();
                         break;
                     default:
                         System.out.println("Invalid choice. Please try again.");
@@ -74,7 +75,8 @@ public class Programming extends Menu {
     }
 
     public void doSearch() {
-        String[] mcs = {"Linear Search", "Binary Search", "Exit"};
+        Programming programming = new Programming();
+        String[] mcs = {"Linear Search", "Binary Search", "Go Back"};
         Menu searchmenu = new Menu("Menu Search", mcs) {
             @Override
             public void execute(int ch) {
@@ -101,7 +103,7 @@ public class Programming extends Menu {
                         }
                         break;
                     case 3:
-                        System.exit(0);
+                        programming.run();
                         break;
                     default:
                         System.out.println("Invalid choice. Please try again.");
