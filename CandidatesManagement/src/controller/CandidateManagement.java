@@ -61,7 +61,7 @@ public class CandidateManagement extends Menu {
             System.out.print("Enter email: ");
             String email = Validator.checkInputEmail();
             Candidate candidate = new Candidate(id, firstName, lastName, birthDate, address, phone, email, type);
-            if (Validator.checkIdExist(candidates, id)==false) {
+            if (Validator.checkIdExist(candidates, id) == false) {
                 switch (type) {
                     case 0:
                         createExperience(candidate);
@@ -123,37 +123,45 @@ public class CandidateManagement extends Menu {
     }
 
     public void searchCandidate() {
-        printListNameCandidate();
-        System.out.print("Enter candidate name (First name or Last name): ");
-        String nameSearch = Validator.checkInputString();
-        System.out.print("Enter type of candidate: ");
-        int typeCandidate = Validator.checkInputIntLimit(0, 2);
-        for (Candidate candidate : candidates) {
-            if (candidate.getType() == typeCandidate
-                    && (candidate.getFName().contains(nameSearch) || candidate.getLName().contains(nameSearch))) {
-                System.out.println(candidate.toString());
-            }
+    printListNameCandidate();
+    System.out.print("Enter candidate name (First name or Last name): ");
+    String nameSearch = Validator.checkInputString();
+    System.out.print("Enter type of candidate: ");
+    int typeCandidate = Validator.checkInputIntLimit(0, 2);
+    
+    System.out.println("The candidates found:");
+    for (Candidate candidate : candidates) {
+        if (candidate.getType() == typeCandidate
+                && (candidate.getFName().contains(nameSearch) || candidate.getLName().contains(nameSearch))) {
+            System.out.println(candidate.getFName() + " " + candidate.getLName() +
+                    " | " + candidate.getDob() + " | " + candidate.getAdd() +
+                    " | " + candidate.getPhone() + " | " + candidate.getEmail() +
+                    " | " + candidate.getType());
         }
     }
+}
+
 
     public void printListNameCandidate() {
-        System.err.println("Experience Candidate");
+        System.out.println("List of candidates:");
+        System.out.println("==========EXPERIENCE CANDIDATE===========");
         for (Candidate candidate : candidates) {
             if (candidate instanceof Experience) {
                 System.out.println(candidate.getFName() + " " + candidate.getLName());
             }
         }
-        System.err.println("Fresher Candidate");
+        System.out.println("==========FRESHER CANDIDATE==============");
         for (Candidate candidate : candidates) {
             if (candidate instanceof Fresher) {
                 System.out.println(candidate.getFName() + " " + candidate.getLName());
             }
         }
-        System.err.println("Intern Candidate");
+        System.out.println("===========INTERN CANDIDATE==============");
         for (Candidate candidate : candidates) {
             if (candidate instanceof Intern) {
                 System.out.println(candidate.getFName() + " " + candidate.getLName());
             }
         }
     }
+
 }
