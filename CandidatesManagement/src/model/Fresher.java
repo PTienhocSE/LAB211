@@ -15,12 +15,7 @@ public class Fresher extends Candidate {
         this.Education = Education;
     }
 
-    public Fresher(int Graduation_date, String Graduation_rank, String Education, int id, String FName, String LName, int dob, String add, int phone, String email, int type) {
-        super(id, FName, LName, dob, add, phone, email, type);
-        this.Graduation_date = Graduation_date;
-        this.Graduation_rank = Graduation_rank;
-        this.Education = Education;
-    }
+    
 
     public int getGraduation_date() {
         return Graduation_date;

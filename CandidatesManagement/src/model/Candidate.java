@@ -2,18 +2,18 @@ package model;
 
 public class Candidate {
 
-    private int id;
+    private String id;
     private String FName, LName;
     private int dob;
     private String add;
-    private int phone;
+    private String phone;
     private String email;
     private int type;
 
     public Candidate() {
     }
 
-    public Candidate(int id, String FName, String LName, int dob, String add, int phone, String email, int type) {
+    public Candidate(String id, String FName, String LName, int dob, String add, String phone, String email, int type) {
         this.id = id;
         this.FName = FName;
         this.LName = LName;
@@ -24,11 +24,11 @@ public class Candidate {
         this.type = type;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -64,11 +64,11 @@ public class Candidate {
         this.add = add;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -90,7 +90,7 @@ public class Candidate {
 
     @Override
     public String toString() {
-        return "candidate{" + "FName=" + FName + ", LName=" + LName + ", dob=" + dob + ", add=" + add + ", phone=" + phone + ", email=" + email + ", type=" + type + '}';
+        return "Candidate{" + "id=" + id + ", FName=" + FName + ", LName=" + LName + ", dob=" + dob + ", add=" + add + ", phone=" + phone + ", email=" + email + ", type=" + type + '}';
     }
 
 }

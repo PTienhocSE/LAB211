@@ -23,6 +23,7 @@ public class Experience extends Candidate {
         this.ExpInYear = ExpInYear;
         this.ProSkill = ProSkill;
     }
+    
 
     public int getExpInYear() {
         return ExpInYear;
