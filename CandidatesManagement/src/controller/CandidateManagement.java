@@ -7,12 +7,44 @@ import model.Candidate;
 import model.Experience;
 import model.Fresher;
 import model.Intern;
+import view.Menu;
 
-public class CandidateManagement {
+public class CandidateManagement extends Menu {
 
-    //allow user input information common of candidate
-    public static void createCandidate(ArrayList<Candidate> candidates, int type) {
-        Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
+    ArrayList<Candidate> candidates = new ArrayList<>();
+
+    public CandidateManagement(String td, String[] mc) {
+        super(td, mc);
+    }
+
+    public static void main(String[] args) {
+        String mChon[] = {"Experience", "Fresher", "Internship", "Searching", "Exit"};
+        CandidateManagement candidateManagement = new CandidateManagement("CANDIDATE MANAGEMENT SYSTEM", mChon);
+        candidateManagement.run();
+    }
+
+    @Override
+    public void execute(int n) {
+        switch (n) {
+            case 1:
+                createCandidate(0);
+                break;
+            case 2:
+                createCandidate(1);
+                break;
+            case 3:
+                createCandidate(2);
+                break;
+            case 4:
+                searchCandidate();
+                break;
+            case 5:
+                System.exit(0);
+        }
+    }
+
+    public void createCandidate(int type) {
         while (true) {
             System.out.print("Enter id: ");
             String id = Validator.checkInputString();
@@ -29,16 +61,16 @@ public class CandidateManagement {
             System.out.print("Enter email: ");
             String email = Validator.checkInputEmail();
             Candidate candidate = new Candidate(id, firstName, lastName, birthDate, address, phone, email, type);
-            if (Validator.checkIdExist(candidates, id)) {
+            if (Validator.checkIdExist(candidates, id)==false) {
                 switch (type) {
                     case 0:
-                        createExperience(candidates, candidate);
+                        createExperience(candidate);
                         break;
                     case 1:
-                        createFresher(candidates, candidate);
+                        createFresher(candidate);
                         break;
                     case 2:
-                        createInternship(candidates, candidate);
+                        createInternship(candidate);
                         break;
                 }
             } else {
@@ -51,9 +83,7 @@ public class CandidateManagement {
         }
     }
 
-    //allow user create experience
-    public static void createExperience(ArrayList<Candidate> candidates,
-            Candidate candidate) {
+    public void createExperience(Candidate candidate) {
         System.out.print("Enter year of experience: ");
         int yearExperience = Validator.checkInputExprience(candidate.getDob());
         System.out.print("Enter professional skill: ");
@@ -65,66 +95,65 @@ public class CandidateManagement {
         System.err.println("Create success.");
     }
 
-    //allow user create fresher
-    public static void createFresher(ArrayList<Candidate> candidates, Candidate candidate) {
-        Scanner sc = new Scanner(System.in);
+    public void createFresher(Candidate candidate) {
         System.out.print("Enter graduation date: ");
         String graduationDate = Validator.checkInputString();
         System.out.print("Enter graduation rank: ");
         String graduationRank = Validator.checkInputGraduationRank();
         System.out.print("Enter University: ");
         String university = sc.nextLine();
-        candidates.add(new Fresher(candidate.getId(), candidate.getFName(), candidate.getLName(), candidate.getDob(), candidate.getAdd(), candidate.getPhone(), candidate.getEmail(), candidate.getType(), graduationDate, graduationRank, university));
+        candidates.add(new Fresher(candidate.getId(), candidate.getFName(), candidate.getLName(),
+                candidate.getDob(), candidate.getAdd(), candidate.getPhone(),
+                candidate.getEmail(), candidate.getType(), graduationDate, graduationRank, university));
         System.err.println("Create success.");
     }
 
-    //allow user create internship
-    public static void createInternship(ArrayList<Candidate> candidates, Candidate candidate) {
-        Scanner sc = new Scanner(System.in);
+    public void createInternship(Candidate candidate) {
         System.out.print("Enter major: ");
         String major = Validator.checkInputString();
         System.out.print("Enter semester: ");
         int semester = sc.nextInt();
+        sc.nextLine();
         System.out.print("Enter university: ");
         String university = Validator.checkInputString();
-        candidates.add(new Intern(candidate.getId(), candidate.getFName(), candidate.getLName(), candidate.getDob(), candidate.getAdd(), candidate.getPhone(), candidate.getEmail(), candidate.getType(), major, semester, university));
+        candidates.add(new Intern(candidate.getId(), candidate.getFName(), candidate.getLName(),
+                candidate.getDob(), candidate.getAdd(), candidate.getPhone(),
+                candidate.getEmail(), candidate.getType(), major, semester, university));
         System.err.println("Create success.");
     }
 
-    //allow user search candidate by name
-    public static void searchCandidate(ArrayList<Candidate> candidates) {
-        printListNameCandidate(candidates);
-        System.out.print("Enter andidate name (First name or Last name): ");
+    public void searchCandidate() {
+        printListNameCandidate();
+        System.out.print("Enter candidate name (First name or Last name): ");
         String nameSearch = Validator.checkInputString();
         System.out.print("Enter type of candidate: ");
         int typeCandidate = Validator.checkInputIntLimit(0, 2);
         for (Candidate candidate : candidates) {
-            if (candidate.getType()== typeCandidate && candidate.getFName().contains(nameSearch) || candidate.getLName().contains(nameSearch)) {
+            if (candidate.getType() == typeCandidate
+                    && (candidate.getFName().contains(nameSearch) || candidate.getLName().contains(nameSearch))) {
                 System.out.println(candidate.toString());
             }
         }
     }
 
-    //display list name candidate
-    public static void printListNameCandidate(ArrayList<Candidate> candidates) {
+    public void printListNameCandidate() {
         System.err.println("Experience Candidate");
         for (Candidate candidate : candidates) {
             if (candidate instanceof Experience) {
-                System.out.println(candidate.getFName()+ " "+ candidate.getLName());
+                System.out.println(candidate.getFName() + " " + candidate.getLName());
             }
         }
         System.err.println("Fresher Candidate");
         for (Candidate candidate : candidates) {
             if (candidate instanceof Fresher) {
-                System.out.println(candidate.getFName()+ " "+ candidate.getLName());
+                System.out.println(candidate.getFName() + " " + candidate.getLName());
             }
         }
-        System.err.println("Internship Candidate");
+        System.err.println("Intern Candidate");
         for (Candidate candidate : candidates) {
             if (candidate instanceof Intern) {
-                System.out.println(candidate.getFName()+ " "+ candidate.getLName());
+                System.out.println(candidate.getFName() + " " + candidate.getLName());
             }
         }
     }
-
 }

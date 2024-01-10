@@ -112,10 +112,10 @@ public class Validator {
         for (Candidate candidate : candidates) {
             if (candidate.getId().equalsIgnoreCase(id)) {
                 System.err.println("Id exists.");
-                return true; // ID exists, returning true
+                return true; 
             }
         }
-        return false; // ID doesn't exist, returning false
+        return false; 
     }
 
     //check experience must be smaller then age
