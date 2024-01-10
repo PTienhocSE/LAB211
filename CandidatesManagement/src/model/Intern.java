@@ -14,13 +14,14 @@ public class Intern extends Candidate {
         this.semester = semester;
         this.universityname = universityname;
     }
-
-    public Intern(String major, int semester, String universityname, int id, String FName, String LName, int dob, String add, int phone, String email, int type) {
+    
+    public Intern(String id, String FName, String LName, int dob, String add, String phone, String email, int type, String major, int semester, String universityname) {
         super(id, FName, LName, dob, add, phone, email, type);
         this.major = major;
         this.semester = semester;
         this.universityname = universityname;
     }
+    
 
     public String getMajor() {
         return major;

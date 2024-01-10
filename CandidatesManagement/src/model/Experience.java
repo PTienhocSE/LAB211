@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
-/**
- *
- * @author phuct
- */
+
 public class Experience extends Candidate {
 
     private int ExpInYear;
@@ -18,7 +12,7 @@ public class Experience extends Candidate {
         this.ProSkill = ProSkill;
     }
 
-    public Experience(int ExpInYear, String ProSkill, int id, String FName, String LName, int dob, String add, int phone, String email, int type) {
+    public Experience(int ExpInYear, String ProSkill, String id, String FName, String LName, int dob, String add, String phone, String email, int type) {
         super(id, FName, LName, dob, add, phone, email, type);
         this.ExpInYear = ExpInYear;
         this.ProSkill = ProSkill;
