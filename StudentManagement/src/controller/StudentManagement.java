@@ -37,42 +37,39 @@ public class StudentManagement extends Menu {
     }
 
     public static void createStudent(int count, ArrayList<Student> studentList) {
-    while (count < 10) {
-        System.out.print("Enter id: ");
-        String id = Validator.checkInputString();
-        System.out.print("Enter name student: ");
-        String name = Validator.checkInputString();
+        while (count < 10) {
+            System.out.print("Enter id: ");
+            String id = Validator.checkInputString();
+            System.out.print("Enter name student: ");
+            String name = Validator.checkInputString();
 
-        if (!Validator.checkIdExist(studentList, id, name)) {
-            System.err.println("Id has existed for a student. Please re-input.");
-            continue;
+            if (!Validator.checkIdExist(studentList, id, name)) {
+                System.err.println("Id has existed for a student. Please re-input.");
+                continue;
+            }
+
+            System.out.print("Enter semester: ");
+            String semester = Validator.checkInputString();
+
+            String course = getValidCourse();
+            if (course == null) {
+                continue;
+            }
+
+            if (!Validator.checkStudentExist(studentList, id, name, semester, course)) {
+                studentList.add(new Student(id, name, semester, course));
+                count++;
+                System.out.println("Add student success.");
+            } else {
+                System.err.println("Student with the same ID, name, semester, and course already exists.");
+            }
         }
 
-        System.out.print("Enter semester: ");
-        String semester = Validator.checkInputString();
-
-        String course = getValidCourse();
-        if (course == null) {
-            continue;
-        }
-
-        if (!Validator.checkStudentExist(studentList, id, name, semester, course)) {
-            studentList.add(new Student(id, name, semester, course));
-            count++;
-            System.out.println("Add student success.");
-        } else {
-            System.err.println("Student with the same ID, name, semester, and course already exists.");
+        System.out.print("Do you want to continue (Y/N): ");
+        if (!Validator.checkInputYN()) {
+            return;
         }
     }
-
-    // Check if the user wants to continue
-    System.out.print("Do you want to continue (Y/N): ");
-    if (!Validator.checkInputYN()) {
-        return;
-    }
-}
-
-
 
     private static String getValidCourse() {
         System.out.println("Available courses:");
@@ -139,10 +136,7 @@ public class StudentManagement extends Menu {
     public static Student getStudentByListFound(ArrayList<Student> listStudentFindByName) {
         System.out.println("List student found: ");
         int count = 1;
-        System.out.printf("%-10s%-15s%-15s%-15s\n", "Number", "Student name",
-                "Semester", "Course Name");
 
-        // Display list of found students
         for (Student student : listStudentFindByName) {
             System.out.printf("%-10d%-15s%-15s%-15s\n", count,
                     student.getStudentName(), student.getSemester(),

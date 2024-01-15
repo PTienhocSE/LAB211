@@ -11,7 +11,7 @@ public class Validator {
     public static boolean checkValidCourse(String course) {
 
         String[] validCourses = {"Java", ".Net", "C/C++"};
-        
+
         String lowercaseCourse = course.toLowerCase();
 
         for (String validCourse : validCourses) {
@@ -40,7 +40,6 @@ public class Validator {
         }
     }
 
-
     public static String checkInputString() {
         while (true) {
             String result = in.nextLine().trim();
@@ -52,7 +51,6 @@ public class Validator {
             }
         }
     }
-
 
     public static boolean checkInputYN() {
         while (true) {
@@ -83,7 +81,6 @@ public class Validator {
         }
     }
 
-    //check report exist
     public static boolean checkReportExist(ArrayList<Report> lr, String name,
             String course, int total) {
         for (Report report : lr) {
@@ -96,7 +93,6 @@ public class Validator {
         return true;
     }
 
-
     public static boolean checkIdExist(ArrayList<Student> ls, String id, String name) {
         for (Student student : ls) {
             if (id.equalsIgnoreCase(student.getId())
@@ -106,7 +102,6 @@ public class Validator {
         }
         return true;
     }
-
 
     public static boolean checkChangeInfomation(Student student, String id,
             String name, String semester, String course) {
@@ -119,8 +114,6 @@ public class Validator {
         return true;
     }
 
-
-
     public static boolean checkStudentExist(ArrayList<Student> ls, String id,
             String studentName, String semester, String courseName) {
         for (Student student : ls) {
@@ -128,7 +121,7 @@ public class Validator {
                     && studentName.equalsIgnoreCase(student.getStudentName())
                     && semester.equalsIgnoreCase(student.getSemester())
                     && courseName.equalsIgnoreCase(student.getCourseName())) {
-                return true; 
+                return true;
             }
         }
         return false;
