@@ -90,39 +90,6 @@ public class FruitManagement extends Menu {
         }
     }
     
-//    public void buyItem(ArrayList<Fruit> fruitList, Hashtable<String, ArrayList<Order>> ht) {
-//        //check list empty user can't buy
-//        if (fruitList.isEmpty()) {
-//            System.err.println("List item is empty!!");
-//            return;
-//        }
-//        //loop until user don't want to buy continue
-//        ArrayList<Order> orderList = new ArrayList<>();
-//        while (true) {
-//            displayFruit(fruitList);
-//            System.out.print("Enter item: ");
-//            int item = Validation.checkInputIntLimit(1, fruitList.size());
-//            Fruit fruit = getFruitByItem(fruitList, item);
-//            System.out.print("Enter quantity: ");
-//            int quantity = Validation.checkInputIntLimit(1, fruit.getQuantity());
-//            fruit.setQuantity(fruit.getQuantity() - quantity);
-//            //check item exist or not
-//            if (!Validation.checkItemExist(orderList, fruit.getFruitId())) {
-//                updateOrder(orderList, fruit.getFruitId(), quantity);
-//            } else {
-//                orderList.add(new Order(fruit.getFruitId(), fruit.getFruitName(), quantity, fruit.getPrice()));
-//            }
-//
-//            if (!Validation.checkInputYN()) {
-//                break;
-//            }
-//        }
-//        displayListOrder(orderList);
-//        System.out.print("Enter name: ");
-//        String name = Validation.checkInputString();
-//        ht.put(name, orderList);
-//        System.err.println("Add successfull");
-//    }
     public void buyItem(ArrayList<Fruit> fruitList, Hashtable<String, ArrayList<Order>> ht) {
     if (fruitList.isEmpty()) {
         System.err.println("List item is empty!!");
@@ -175,18 +142,4 @@ public class FruitManagement extends Menu {
         }
     }
     
-//    public static Fruit getFruitByItem(ArrayList<Fruit> lf, int item) {
-//        int countItem = 1;
-//        for (Fruit fruit : lf) {
-//            //check shop have item or not 
-//            if (fruit.getQuantity() != 0) {
-//                countItem++;
-//            }
-//            if (countItem - 1 == item) {
-//                return fruit;
-//            }
-//        }
-//        return null;
-//    }
-
 }

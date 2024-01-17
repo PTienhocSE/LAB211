@@ -20,7 +20,7 @@ public class Validation {
                 }
                 return result;
             } catch (NumberFormatException e) {
-                System.err.println("Amount of fruit remaining [" + min + ", " + max + "]");
+                System.err.println("Please choice [" + min + ", " + max + "]");
                 System.out.print("Enter again: ");
             }
         }
