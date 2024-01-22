@@ -58,6 +58,11 @@ public class Student implements Comparable<Student>{
     public String print() {
         return id + "|" + studentName + "|" + semester + "|" + courseName;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" + "id=" + id + ", studentName=" + studentName + ", semester=" + semester + ", courseName=" + courseName + '}';
+    }
     
     
     
