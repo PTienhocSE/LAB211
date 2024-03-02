@@ -14,9 +14,7 @@ public class Validator {
     private static final String EMAIL_VALID
             = "^[A-Za-z0-9.+-_%]+@[A-Za-z.-]+\\.[A-Za-z]{2,4}$";
 
-    //check user input number limit
     public static int checkInputIntLimit(int min, int max) {
-        //loop until user input correct
         while (true) {
             try {
                 int result = Integer.parseInt(in.nextLine().trim());
@@ -32,9 +30,7 @@ public class Validator {
         }
     }
 
-    //check user input string
     public static String checkInputString() {
-        //loop until user input correct
         while (true) {
             String result = in.nextLine().trim();
             if (result.isEmpty()) {
@@ -46,9 +42,7 @@ public class Validator {
         }
     }
 
-    //check user input y/Y or n/N
     public static boolean checkInputYN() {
-        //loop until user input correct
         while (true) {
             String result = checkInputString();
             //check user input y/Y or n/N
@@ -62,11 +56,9 @@ public class Validator {
         }
     }
 
-    //check phone is number with minimum 10 characters
     public static String checkInputPhone() {
         while (true) {
             String result = checkInputString();
-            //check user input phone valid
             if (result.matches(PHONE_VALID)) {
                 return result;
             } else {
@@ -76,12 +68,9 @@ public class Validator {
         }
     }
 
-    //check email with format <account name>@<domain>. (eg: annguyen@fpt.edu.vn)
     public static String checkInputEmail() {
-        //loop until user input correct
         while (true) {
             String result = checkInputString();
-            //check user input email valid
             if (result.matches(EMAIL_VALID)) {
                 return result;
             } else {
@@ -91,7 +80,6 @@ public class Validator {
         }
     }
 
-    //check user input graduation rank
     public static String checkInputGraduationRank() {
         while (true) {
             String result = checkInputString();
@@ -107,7 +95,6 @@ public class Validator {
         }
     }
 
-    //check id exist or not
     public static boolean checkIdExist(ArrayList<Candidate> candidates, String id) {
         for (Candidate candidate : candidates) {
             if (candidate.getId().equalsIgnoreCase(id)) {
@@ -118,7 +105,6 @@ public class Validator {
         return false; 
     }
 
-    //check experience must be smaller then age
     public static int checkInputExprience(int birthDate) {
         int yearCurrent = Calendar.getInstance().get(Calendar.YEAR);
         int age = yearCurrent - birthDate;
