@@ -9,7 +9,7 @@ package controller;
  * @author phuct
  */
 public class Validation {
-    private static boolean checkSquareNumber(int n) {
+    public boolean isPerfectSquare(int n) {
         if (Math.sqrt(n) * Math.sqrt(n) == n) {
             return true;
         }

@@ -8,7 +8,7 @@ import java.util.Scanner;
 import model.Text; // Import class Text from the model package
 
 public class Programming {
-
+    Validation validation = new Validation();
     Scanner sc = new Scanner(System.in);
 
     public void run() {
@@ -53,7 +53,7 @@ public class Programming {
                 } else {
                     oddNumbers.add(num);
                 }
-                if (isPerfectSquare(num)) {
+                if (validation.isPerfectSquare(num)) {
                     squareNumbers.add(num);
                 }
             }
@@ -67,12 +67,6 @@ public class Programming {
         return numberAnalysis;
     }
 
-    private boolean isPerfectSquare(int n) {
-        if (Math.sqrt(n) * Math.sqrt(n) == n) {
-            return true;
-        }
-        return false;
-    }
 
     public HashMap<String, StringBuilder> getCharacter(String inputString) {
         HashMap<String, StringBuilder> characterAnalysis = new HashMap<>();
